@@ -1,41 +1,52 @@
-let shopItemsGrid;
+import { products } from "./product_data.js";
 
-function onScroll() {
+function scrollTitleAnimation() {
     let scrollTop = (window.scrollY || document.scrollTop)  - (document.clientTop || 0);
     let size = Math.max(60 - ((scrollTop / 10) || 0), 20);
 
     document.querySelector('#Title').setAttribute('style', 'font-size: '+size+'px;');
 }
 
-function addItem(name, price, image) {
-    const item = document.createElement("div");
-    item.className = "shop-item";
+function createProductElement(product, productListingsGrid) {
+    const productElement = document.createElement("div");
+    productElement.className = "product-listing";
+    productElement.onclick = () => {viewProduct(product.id)};
 
-    const itemPreview = document.createElement("img");
-    itemPreview.className = "item-preview";
-    itemPreview.src = image;
-    item.appendChild(itemPreview);
+    const previewElement = document.createElement("img");
+    previewElement.className = "product-preview";
+    previewElement.src = product.image;
+    productElement.appendChild(previewElement);
 
-    const itemName = document.createElement("p");
-    itemName.className = "item-info";
-    itemName.innerHTML = name;
-    item.appendChild(itemName);
+    const titleElement = document.createElement("p");
+    titleElement.className = "product-info";
+    titleElement.innerHTML = product.title;
+    productElement.appendChild(titleElement);
 
-    const itemPrice = document.createElement("p");
-    itemPrice.className = "item-info";
-    itemPrice.innerHTML = price;
-    item.appendChild(itemPrice);
+    const priceElement = document.createElement("p");
+    priceElement.className = "product-info";
+    priceElement.innerHTML = `$${(Math.round(product.price * 100) / 100).toFixed(2)}`; // Always show 2 decimal places
+    productElement.appendChild(priceElement);
 
-    shopItemsGrid.appendChild(item);
+    productListingsGrid.appendChild(productElement);
+}
+
+function viewProduct(id) {
+    window.location.href = `product.html?id=${id}`;
+    //PHP My Admin or API to store clothing with UUIDs 
+}
+
+function displayProducts(clothingData, productListingsGrid) {
+    for (let i = 0; i < clothingData.length; i++) {
+        createProductElement(clothingData[i], productListingsGrid);
+    }
 }
 
 window.onload = (event) => {
-    shopItemsGrid = document.querySelector(".shop-items-grid");
-    window.addEventListener('scroll', onScroll);
-    addItem("OG Special Edition \"Whiteout\" Hoodie", "$74.99", "assets/whiteout_hoodie.png");
-    addItem("Core Collection \"Arctic White\" Windbreaker", "$92.99", "assets/arctic_white_windbreaker.png");
-    addItem("Neon Vibe \"Sunset Orange\" Track Pants", "$38.99", "assets/sunset_orange_trackpants.png");
-    addItem("Graffiti Canvas \"Urban Gray\" Hoodie", "$44.99", "assets/urban_gray_hoodie.png");
-    addItem("Retro Revival \"Electric Blue\" Crewneck", "$103.99", "assets/electric_blue_crewneck.png");
-    addItem("Midnight Runner \"Crimson Red\" Joggers ", "$39.99", "assets/crimson_red_joggers.png");
+    let productListingsGrid = document.querySelector(".product-listings-grid");
+    window.addEventListener('scroll', scrollTitleAnimation);
+    // fetch("https://fakestoreapi.com/products/category/men's%20clothing")
+    //         .then(response => response.json())
+    //         .then(json => displayProducts(json, productListingsGrid));
+
+    displayProducts(products, productListingsGrid);
 };

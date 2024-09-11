@@ -5,7 +5,7 @@
 	color: #e8e8e8;
 }
 
-#Store {
+body {
 	background-color: #0a0a0a;
 }
 
@@ -19,38 +19,45 @@
 	align-items: center;
 }
 
-.shop-items-grid {
+.product-listings-grid {
 	display: grid;
 	justify-content: center;
-	gap: 250px;
+	gap: 200px;
 	grid-template-columns: repeat(3, 250px);
 
 }
 
-.item-info {
+.product-info {
 	text-align: center;
 	font-size: 18px;
 }
 
-.shop-item {
-	padding-bottom: 25px;
+.product-listing {
 	width: 200px;
 	height: 200px;
 }
 
-.item-preview {
+.product-preview {
+	padding-bottom: 15px;
 	display: block;
 	margin: auto;
-	height: 100%;
+	max-width: 100%;
+	max-height: 100%;
 }
 
-.item-preview:hover {
+.product-preview:hover {
 	transform: scale(110%);
 	transition: transform 0.125s;
 	cursor: pointer;
 }
 
-.item-preview:not(:hover) {
+.product-preview:not(:hover) {
 	transform: scale(100%);
 	transition: transform 0.125s;
+}
+
+.product-view {
+	height: 60%;
+	margin: auto;
+	padding: 50px;
 }
