@@ -14,7 +14,7 @@ function createProductElement(product, productListingsGrid) {
 
     const previewElement = document.createElement("img");
     previewElement.className = "product-preview";
-    previewElement.src = product.image;
+    previewElement.src = "assets/" + product.image;
     productElement.appendChild(previewElement);
 
     const titleElement = document.createElement("p");
