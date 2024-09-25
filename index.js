@@ -30,9 +30,14 @@ function createProductElement(product, productListingsGrid) {
     productListingsGrid.appendChild(productElement);
 }
 
+function displayErrorText() {
+    const errorTextElement = document.createElement("h1");
+    errorTextElement.textContent = "API is not running right now! Please check back later!";
+    document.body.appendChild(errorTextElement);
+}
+
 function viewProduct(id) {
     window.location.href = `product.html?id=${id}`;
-    //PHP My Admin or API to store clothing with UUIDs 
 }
 
 function displayProducts(clothingData, productListingsGrid) {
@@ -44,6 +49,12 @@ function displayProducts(clothingData, productListingsGrid) {
 window.onload = async (event) => {
     let productListingsGrid = document.querySelector(".product-listings-grid");
     window.addEventListener('scroll', scrollTitleAnimation);
-    let products = await getProducts();
+    try {
+        var products = await getProducts();
+    } catch (error) {
+        displayErrorText();
+        console.error(error);
+        return;
+    }
     displayProducts(products, productListingsGrid);
 };
