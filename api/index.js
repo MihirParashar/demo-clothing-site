@@ -26,7 +26,7 @@ app.use("/products", (req, res) => {
     if (id) {
         statement += ` WHERE id=${id}`;
     }
-    db.query(sql, (err, results) => {
+    db.query(statement, (err, results) => {
         if (err) {
             return res.status(500).json({ error: 'Database query failed' });
         }
