@@ -1,4 +1,4 @@
-import { products } from "./product_data.js";
+import { getProducts } from "./get_products.js";
 
 function createProductElement(product) {
     const productElement = document.createElement("div");
@@ -28,8 +28,9 @@ function buyProduct(id) {
     console.log("buying product");
 }
 
-window.onload = (event) => {
+window.onload = async (event) => {
     const id = window.location.search.split("?id=")[1];   
+    let products = await getProducts(id);
     const product = products.find((product) => {return product.id == id});
     // fetch(`https://fakestoreapi.com/products/${id}`)
     //         .then(response => response.json())

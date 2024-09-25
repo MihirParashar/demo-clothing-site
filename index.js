@@ -1,4 +1,4 @@
-import { products } from "./product_data.js";
+import { getProducts } from "./get_products.js";
 
 function scrollTitleAnimation() {
     let scrollTop = (window.scrollY || document.scrollTop)  - (document.clientTop || 0);
@@ -41,12 +41,9 @@ function displayProducts(clothingData, productListingsGrid) {
     }
 }
 
-window.onload = (event) => {
+window.onload = async (event) => {
     let productListingsGrid = document.querySelector(".product-listings-grid");
     window.addEventListener('scroll', scrollTitleAnimation);
-    // fetch("https://fakestoreapi.com/products/category/men's%20clothing")
-    //         .then(response => response.json())
-    //         .then(json => displayProducts(json, productListingsGrid));
-
+    let products = await getProducts();
     displayProducts(products, productListingsGrid);
 };
