@@ -1,6 +1,3 @@
-// Normally this would be an API, but I don't want to run a web server 24/7.
-// I also can't make it a JSON file because that gives me the CORS error.
-
 let products = []
 
 async function getProducts(id) {
