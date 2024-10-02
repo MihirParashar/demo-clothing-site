@@ -1,5 +1,3 @@
-let products = []
-
 async function getProducts(id) {
     let url = "http://localhost:3000/products"
     if (id) {
