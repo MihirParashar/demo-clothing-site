@@ -24,7 +24,17 @@ body {
 	justify-content: center;
 	gap: 200px;
 	grid-template-columns: repeat(3, 250px);
+}
 
+.product-listings-grid > .product {
+	width: 200px;
+	height: 200px;
+}
+
+.product {
+	height: 60%;
+	margin: auto;
+	padding: 50px;
 }
 
 .product-info {
@@ -32,12 +42,8 @@ body {
 	font-size: 18px;
 }
 
-.product-listing {
-	width: 200px;
-	height: 200px;
-}
 
-.product-preview {
+.product-image {
 	padding-bottom: 15px;
 	display: block;
 	margin: auto;
@@ -45,19 +51,13 @@ body {
 	max-height: 100%;
 }
 
-.product-preview:hover {
+.product-image:hover {
 	transform: scale(110%);
 	transition: transform 0.125s;
 	cursor: pointer;
 }
 
-.product-preview:not(:hover) {
+.product-image:not(:hover) {
 	transform: scale(100%);
 	transition: transform 0.125s;
-}
-
-.product-view {
-	height: 60%;
-	margin: auto;
-	padding: 50px;
 }

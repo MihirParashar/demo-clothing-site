@@ -1,5 +1,5 @@
-import { getAllProducts } from "./get_products.js";
-import { createProductElement } from "./product.js";
+import { getAllProducts } from "./modules/get_products.js";
+import { createProductElement } from "./modules/product_element_factory.js";
 
 function scrollTitleAnimation() {
     let scrollTop = (window.scrollY || document.scrollTop)  - (document.clientTop || 0);
