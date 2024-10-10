@@ -12,6 +12,7 @@ window.onload = async (event) => {
         let cart = JSON.parse(localStorage.getItem("cart"));
         if (!cart) {
             displayErrorText("Cart is empty!");
+            return;
         }
         for (let itemID of cart) {
             let product = await getProduct(itemID);
