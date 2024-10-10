@@ -1,15 +1,27 @@
 import { getProduct } from "./modules/get_products.js";
-import { createProductElement } from "./modules/product_element_factory.js";
+import { displayProduct, displayErrorText } from "./modules/element_factory.js";
 
 
-function buyProduct(id) {
-    // To be implemented
-    console.log(`buying product ${id}`);
+function addToCart(id) {
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+    if (!cart.includes(id)) {
+        cart.push(id);
+    }
+    localStorage.setItem("cart", JSON.stringify(cart));
+    window.location.href = `cart.html`;
 }
 
 window.onload = async (event) => {
-    const id = window.location.search.split("?id=")[1];   
-    let products = await getProduct(id);
-    const product = products.find((product) => {return product.id == id});
-    createProductElement(product, document.body, buyProduct);
+    const id = window.location.search.split("?id=")[1]; 
+    if (!id) {
+        displayErrorText("Invalid search!");
+    }  
+    try {
+        let product = await getProduct(id);
+        displayProduct(product, document.body, addToCart);
+    } catch (error) {
+        displayErrorText("API is not responding right now! Please check back later!");
+        console.error(error);
+        return;
+    }
 };

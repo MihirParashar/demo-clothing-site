@@ -1,5 +1,5 @@
 import { getAllProducts } from "./modules/get_products.js";
-import { createProductElement } from "./modules/product_element_factory.js";
+import { displayProduct, displayErrorText } from "./modules/element_factory.js";
 
 function scrollTitleAnimation() {
     let scrollTop = (window.scrollY || document.scrollTop)  - (document.clientTop || 0);
@@ -8,19 +8,13 @@ function scrollTitleAnimation() {
     document.querySelector('#Title').setAttribute('style', 'font-size: '+size+'px;');
 } 
 
-function displayErrorText() {
-    const errorTextElement = document.createElement("h1");
-    errorTextElement.textContent = "API is not running right now! Please check back later!";
-    document.body.appendChild(errorTextElement);
-}
-
 function viewProduct(id) {
     window.location.href = `product.html?id=${id}`;
 }
 
 function displayProducts(clothingData, productListingsGrid) {
     for (let product of clothingData) {
-        createProductElement(product, productListingsGrid, viewProduct);
+        displayProduct(product, productListingsGrid, viewProduct);
     }
 }
 
@@ -31,7 +25,7 @@ window.onload = async (event) => {
         let products = await getAllProducts();
         displayProducts(products, productListingsGrid);
     } catch (error) {
-        displayErrorText();
+        displayErrorText("API is not responding right now! Please check back later!");
         console.error(error);
         return;
     }

@@ -31,7 +31,7 @@ app.use("/products", (req, res) => {
             return res.status(500).json({ error: 'Database query failed' });
         }
         
-        res.json(results); // Send the products back as JSON
+        res.json(id ? results[0] : results); // There should only be one result if searching with ID
     });
 });
 

@@ -1,4 +1,4 @@
-function createProductElement(product, container, action) {
+function displayProduct(product, container, action) {
     const productElement = document.createElement("div");
     productElement.className = "product";
     productElement.onclick = () => { action(product.id) };
@@ -21,4 +21,10 @@ function createProductElement(product, container, action) {
     container.appendChild(productElement);
 }
 
-export { createProductElement };
+function displayErrorText(text) {
+    const errorTextElement = document.createElement("h1");
+    errorTextElement.textContent = text;
+    document.body.appendChild(errorTextElement);
+}
+
+export { displayProduct, displayErrorText };
