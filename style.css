@@ -9,7 +9,7 @@ body {
 	background-color: #0a0a0a;
 }
 
-#Title {
+#ScrollingTitle {
 	width: 100%;
 	height: 100%;
 	font-size: 60px;
@@ -61,3 +61,17 @@ body {
 	transform: scale(100%);
 	transition: transform 0.125s;
 }
+
+.centered {
+	text-align: center;
+}
+
+.navbar > * {
+	padding: 5px;	
+	text-decoration: none;
+}
+
+.navbar > *:hover {
+	background-color: #525252;
+}
+

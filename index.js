@@ -5,7 +5,7 @@ function scrollTitleAnimation() {
     let scrollTop = (window.scrollY || document.scrollTop)  - (document.clientTop || 0);
     let size = Math.max(60 - ((scrollTop / 10) || 0), 20);
 
-    document.querySelector('#Title').setAttribute('style', 'font-size: '+size+'px;');
+    document.querySelector('#ScrollingTitle').setAttribute('style', 'font-size: '+size+'px;');
 } 
 
 function viewProduct(id) {
