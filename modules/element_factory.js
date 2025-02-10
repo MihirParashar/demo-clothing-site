@@ -5,7 +5,7 @@ function displayProduct(product, container, action) {
 
     const imageElement = document.createElement("img");
     imageElement.className = "product-image";
-    imageElement.src = "assets/" + product.image;
+    imageElement.src = "assets/uploaded/" + product.image;
     productElement.appendChild(imageElement);
 
     const titleElement = document.createElement("p");

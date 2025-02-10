@@ -10,11 +10,14 @@ function addToCart(id) {
     localStorage.setItem("cart", JSON.stringify(cart));
     window.location.href = `cart.html`;
 }
+// assets/uploaded gitignore, sample images saved, download instructions, database creator
+// OOP cart?
 
 window.onload = async (event) => {
     const id = window.location.search.split("?id=")[1]; 
     if (!id) {
         displayErrorText("Invalid search!");
+        return;
     }  
     try {
         let product = await getProduct(id);
