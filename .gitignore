@@ -1,2 +1,3 @@
 node_modules
 assets/uploaded/*
+!assets/uploaded/README.md

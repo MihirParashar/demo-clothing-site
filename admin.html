@@ -1,0 +1,27 @@
+<html>
+	<head>
+		<title>Product Database</title>
+		<link rel="icon" href="assets/icon.png">
+		<link rel="stylesheet" href="style.css">
+		<script type="module" src="admin.js"></script>
+	</head>
+	<body>
+		<h1 class="centered">PRODUCT DATABASE</h1>
+		<h1>View Products</h1>
+		<table class="products-table">
+			<tr>
+				<th>TITLE</th>
+				<th>PRICE</th>
+				<th>IMAGE</th>
+				<th>DELETE</th>
+			</tr>
+		</table>
+		<h1>Create Product</h1>
+		<form action="http://localhost:3000/create" method="post" enctype="multipart/form-data">
+			<input type="text" name="title" placeholder="Product Title">
+			<input type="text" name="price" placeholder="Product Price">
+			<input type="file" name="image">
+			<button type="submit">Submit</button>
+		  </form>
+	</body>
+</html>
