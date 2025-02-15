@@ -3,6 +3,7 @@ import { displayErrorText } from "./modules/element_factory.js";
 
 function deleteProduct(id) {
     fetch(`http://localhost:3000/delete?id=${id}`);
+    localStorage.removeItem("cart");
     window.location.reload();
 }
 
@@ -10,12 +11,21 @@ function deleteProduct(id) {
 // TODO: Work without API
 // TODO: Clothes search
 
-window.onload = async () => {
+window.addEventListener("load", async () => {
     const productsTable = document.querySelector(".products-table");
-    
+    const form = document.getElementById("addProductForm");
+
+    form.addEventListener("submit", (e) => {
+        e.preventDefault();
+        const formData = new FormData(form);
+        fetch("http://localhost:3000/create", {
+            method: "POST",
+            body: formData
+        });
+    });
+
     try {
         let products = await getAllProducts();
-        console.log(products);
         for (let product of products) {
             const row = document.createElement("tr");
 
@@ -43,4 +53,8 @@ window.onload = async () => {
         console.error(error);
         return;
     }
-}
+});
+
+window.addEventListener("beforeunload", () => {
+    localStorage.removeItem("admin");
+});

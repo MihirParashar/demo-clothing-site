@@ -23,6 +23,7 @@ function displayProduct(product, container, action) {
 
 function displayErrorText(text) {
     const errorTextElement = document.createElement("h1");
+    errorTextElement.classList.add("centered");
     errorTextElement.textContent = text;
     document.body.appendChild(errorTextElement);
 }

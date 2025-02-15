@@ -15,7 +15,7 @@ function removeFromCart(id) {
 }
 
 
-window.onload = async (event) => {
+window.addEventListener("load", async (event) => {
     let productListingsGrid = document.querySelector(".product-listings-grid");
     try {
         let cart = JSON.parse(localStorage.getItem("cart"));
@@ -32,4 +32,4 @@ window.onload = async (event) => {
         console.error(error);
         return;
     }
-};  
+});  

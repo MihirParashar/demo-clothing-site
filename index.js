@@ -18,7 +18,7 @@ function displayProducts(clothingData, productListingsGrid) {
     }
 }
 
-window.onload = async (event) => {
+window.addEventListener("load", async (event) => {
     let productListingsGrid = document.querySelector(".product-listings-grid");
     window.addEventListener('scroll', scrollTitleAnimation);
     try {
@@ -29,4 +29,4 @@ window.onload = async (event) => {
         console.error(error);
         return;
     }
-};  
+});  

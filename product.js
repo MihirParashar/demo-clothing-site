@@ -13,7 +13,7 @@ function addToCart(id) {
 // assets/uploaded gitignore, sample images saved, download instructions, database creator
 // OOP cart?
 
-window.onload = async (event) => {
+window.addEventListener("load", async (event) => {
     const id = window.location.search.split("?id=")[1]; 
     if (!id) {
         displayErrorText("Invalid search!");
@@ -27,4 +27,4 @@ window.onload = async (event) => {
         console.error(error);
         return;
     }
-};
+});
