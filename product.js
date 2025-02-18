@@ -23,7 +23,7 @@ window.addEventListener("load", async (event) => {
         let product = await getProduct(id);
         displayProduct(product, document.body, addToCart);
     } catch (error) {
-        displayErrorText("API is not responding right now! Please check back later!");
+        displayErrorText("API error! Please check back later!");
         console.error(error);
         return;
     }

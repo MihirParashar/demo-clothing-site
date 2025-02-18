@@ -1,14 +1,14 @@
 import { getProduct } from "./modules/get_products.js";
 import { displayErrorText, displayProduct } from "./modules/element_factory.js";
 
-function viewProduct(id) {
-    window.location.href = `product.html?id=${id}`;
+function viewProduct(productID) {
+    window.location.href = `product.html?id=${productID}`;
 }
 
-function removeFromCart(id) {
+function removeFromCart(productID) {
     let cart = JSON.parse(localStorage.getItem("cart")) || [];
-    if (cart.includes(id)) {
-        cart = cart.filter(item => item !== id);
+    if (cart.includes(productID)) {
+        cart = cart.filter(id => id !== productID);
     }
     localStorage.setItem("cart", JSON.stringify(cart));
     location.reload();
@@ -23,12 +23,12 @@ window.addEventListener("load", async (event) => {
             displayErrorText("Cart is empty!");
             return;
         }
-        for (let itemID of cart) {
-            let product = await getProduct(itemID);
+        for (let productID of cart) {
+            let product = await getProduct(productID);
             displayProduct(product, productListingsGrid, removeFromCart);
         }
     } catch (error) {
-        displayErrorText("API is not responding right now! Please check back later!");
+        displayErrorText("API error! Please check back later!");
         console.error(error);
         return;
     }

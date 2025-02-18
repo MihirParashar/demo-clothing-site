@@ -49,7 +49,7 @@ window.addEventListener("load", async () => {
             productsTable.appendChild(row);
         }
     } catch (error) {
-        displayErrorText("API is not responding right now! Please check back later!");
+        displayErrorText("API error! Please check back later!");
         console.error(error);
         return;
     }
